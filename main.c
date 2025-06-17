@@ -3,18 +3,15 @@
 #include "fonts.h"
 #include "string.h"
 
-
 #define LED_RED_PIN     5
 #define LED_YELLOW_PIN  6
 #define LED_GREEN_PIN   7
-
 
 I2C_HandleTypeDef hi2c1;
 UART_HandleTypeDef huart2;
 volatile uint8_t led_mode = 0; // 0: blink, 1: steady
 volatile uint8_t led_state[3] = {0, 0, 0}; // 0: off, 1: on (RED, YELLOW, GREEN)
 char last_command[8] = ""; // Biến để lưu câu lệnh cuối cùng
-
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -24,7 +21,6 @@ static void MX_TIM2_Init(void);
 static void MX_EXTI_Init(void);
 void update_leds(void);
 void delay(volatile uint32_t t);
-
 
 void delay(volatile uint32_t t) {
   while(t--);
